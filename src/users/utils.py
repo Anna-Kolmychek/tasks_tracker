@@ -1,7 +1,7 @@
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
-from src.users import models
+from src.users import models, schemas
 
 
 def get_position_id(position: str, db: Session):
@@ -9,6 +9,16 @@ def get_position_id(position: str, db: Session):
     if db_position:
         return db_position.id
     return None
+
+    #
+def prepare_dict_user_data(user: schemas.User, db: Session):
+    user_data = user.dict(exclude_unset=True)
+    if user_data.get('position'):
+        position_id = get_position_id(position=user.position, db=db)
+        user_data.pop('position', None)
+        user_data['position_id'] = position_id
+    return user_data
+
 
 
 def check_duplicate_email(email: str, db: Session):

@@ -1,8 +1,11 @@
 from typing import Annotated, Optional
 from pydantic import BaseModel
 
-# def convert_to_optional(schema):
-#     return {k: Optional[v] for k, v in schema.__annotations__.items()}
+
+def convert_to_partial(schema):
+
+    return {k: f'{v} | None = None' for k, v in schema.__annotations__.items()}
+
 
 class UserBase(BaseModel):
     email: str
@@ -16,8 +19,12 @@ class UserCreate(UserBase):
 class UserUpdate(UserCreate):
     pass
 
-# class UserOptionalUpdate(UserUpdate):
-#     __annotations__ = convert_to_optional(UserUpdate)
+
+class UserPartialUpdate(UserUpdate):
+    # __annotations__ = convert_to_partial(UserUpdate)
+    email: str | None = None
+    password: str | None = None
+    position: str | None = None
 
 
 class User(UserBase):
@@ -38,6 +45,7 @@ class PositionCreate(PositionBase):
 
 class PositionUpdate(PositionBase):
     pass
+
 
 # class PositionOptionalUpdate(PositionUpdate):
 #     __annotations__ = convert_to_optional(PositionUpdate)

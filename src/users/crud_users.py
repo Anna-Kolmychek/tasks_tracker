@@ -1,19 +1,17 @@
 from fastapi import HTTPException
+from fastapi.encoders import jsonable_encoder
+from sqlalchemy import update
 from sqlalchemy.orm import Session
 from src.users import schemas
 from src.users import models
-from src.users.utils import get_position_id, check_duplicate_email
+from src.users.utils import get_position_id, check_duplicate_email, prepare_dict_user_data
 
 
 def create_user(user: schemas.UserCreate, db: Session):
     check_duplicate_email(email=user.email, db=db)
 
-    position_id = get_position_id(position=user.position, db=db)
-    db_user = models.User(
-        email=user.email,
-        password=user.password,
-        position_id=position_id
-    )
+    user_data = prepare_dict_user_data(user, db=db)
+    db_user = models.User(**user_data)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
@@ -25,7 +23,6 @@ def get_all_users(db: Session, skip: int = 0, limit: int = 10):
 
 
 def get_user_by_id(id: int, db: Session):
-    # return db.query(models.User).filter(models.User.id == user_id).first()
     db_user = db.query(models.User).get(id)
     if not db_user:
         raise HTTPException(status_code=404, detail=f'User with id={id} not exist')
@@ -40,12 +37,11 @@ def update_user_by_id(db: Session, user: schemas.UserUpdate, id: int):
     db_user = get_user_by_id(id=id, db=db)
     if db_user.email != user.email:
         check_duplicate_email(email=user.email, db=db)
-    db_user.email = user.email
-    db_user.password = user.password
-    position_id = get_position_id(position=user.position, db=db)
-    db_user.position_id = position_id
 
-    db.add(db_user)
+    user_data = prepare_dict_user_data(user, db=db)
+
+    query = update(models.User).where(models.User.id == id).values(**user_data)
+    db.execute(query)
     db.commit()
     db.refresh(db_user)
     return db_user
