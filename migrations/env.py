@@ -7,10 +7,13 @@ from sqlalchemy import pool
 
 from alembic import context
 
+from src.database import Base
+from src.users.models import User
+
 sys.path.append(os.path.join(sys.path[0], 'src'))
 
 from src.config import DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME
-from src.tasks.models import Task
+# from src.tasks.models import Task
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -33,7 +36,8 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = Task.metadata
+
+target_metadata = User.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
