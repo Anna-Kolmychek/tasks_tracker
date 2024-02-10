@@ -31,6 +31,7 @@ async def update_user_by_id(id: int, user: schemas.UserUpdate, db: Session = Dep
     return crud_users.update_user_by_id(id=id, user=user, db=db)
 
 
+
 @router.delete('/{id}', status_code=204)
 async def delete_user_by_id(id: int, db: Session = Depends(get_db)):
     crud_users.delete_user_by_id(id=id, db=db)

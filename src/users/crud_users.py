@@ -8,7 +8,7 @@ from src.users.utils import get_position_id, check_duplicate_email
 def create_user(user: schemas.UserCreate, db: Session):
     check_duplicate_email(email=user.email, db=db)
 
-    position_id = get_position_id(user.position)
+    position_id = get_position_id(position=user.position, db=db)
     db_user = models.User(
         email=user.email,
         password=user.password,
@@ -16,7 +16,7 @@ def create_user(user: schemas.UserCreate, db: Session):
     )
     db.add(db_user)
     db.commit()
-    # db.refresh(db_user)
+    db.refresh(db_user)
     return db_user
 
 
@@ -42,12 +42,12 @@ def update_user_by_id(db: Session, user: schemas.UserUpdate, id: int):
         check_duplicate_email(email=user.email, db=db)
     db_user.email = user.email
     db_user.password = user.password
-    position_id = get_position_id(user.position)
+    position_id = get_position_id(position=user.position, db=db)
     db_user.position_id = position_id
 
     db.add(db_user)
     db.commit()
-    # db.refresh(db_user)
+    db.refresh(db_user)
     return db_user
 
 
@@ -55,3 +55,4 @@ def delete_user_by_id(db: Session, id: int):
     db_user = get_user_by_id(id=id, db=db)
     db.delete(db_user)
     db.commit()
+    return db_user
