@@ -6,7 +6,6 @@ from sqlalchemy.orm import relationship, Mapped, mapped_column
 
 from src.database import Base
 from src.tasks.schemas import TaskStatus
-from src.users.models import User, Position
 
 
 class Task(Base):
@@ -22,6 +21,6 @@ class Task(Base):
     maker_id: Mapped[Optional[int]] = mapped_column(ForeignKey('user_account.id'), default=None)
     maker_position_id: Mapped[Optional[int]] = mapped_column(ForeignKey('job_position.id'), default=None)
 
-    parent_task: Mapped['Task'] = relationship(back_populates='child_task')
+    parent_task: Mapped['Task'] = relationship(remote_side=[id], backref='child_task')
     maker: Mapped['User'] = relationship(back_populates='tasks')
     maker_position: Mapped['Position'] = relationship(back_populates='tasks')

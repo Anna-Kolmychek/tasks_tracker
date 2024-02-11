@@ -23,9 +23,14 @@ class TaskCreate(TaskOptioanlPart):
     title: str
 
 
+class TaskUpdate(TaskOptioanlPart):
+    title: str
+
+class TaskPartialUpdate(TaskOptioanlPart):
+    title: str | None = None
+
+
 class Task(TaskOptioanlPart):
     id: int
+    title: str
 
-
-class TaskUpdate(TaskOptioanlPart):
-    title: str | None = None

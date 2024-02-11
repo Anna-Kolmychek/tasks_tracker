@@ -8,7 +8,7 @@ from src.users import crud_positions
 
 router = APIRouter(
     prefix="/positions",
-    tags=["positions"],
+    tags=["positions CRUD"],
 )
 
 
