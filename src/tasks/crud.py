@@ -7,7 +7,7 @@ from src.tasks.utils import check_relationship_fields
 
 def create_task(task: schemas.TaskCreate, db: Session):
     check_relationship_fields(task=task, db=db)
-    db_task = models.Task(**task.dict())
+    db_task = models.Task(**task.model_dump())
     db.add(db_task)
     db.commit()
     db.refresh(db_task)
@@ -29,9 +29,11 @@ def update_task_by_id(id: int, task: schemas.TaskUpdate, db: Session, is_partial
     check_relationship_fields(task=task, db=db)
     db_task = get_task_by_id(id=id, db=db)
     if is_partial_update:
-        query = update(models.Task).where(models.Task.id == id).values(**task.dict(exclude_unset=True))
+        task_data = task.model_dump(exclude_unset=True)
     else:
-        query = update(models.Task).where(models.Task.id == id).values(**task.dict())
+        task_data = task.model_dump()
+
+    query = update(models.Task).where(models.Task.id == id).values(**task_data)
     db.execute(query)
     db.commit()
     db.refresh(db_task)
