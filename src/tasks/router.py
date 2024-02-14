@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
+from src.constants import LIMIT_SELECT as LIMIT
 from src.database import get_db
 from src.tasks import schemas, crud
 
@@ -16,7 +17,7 @@ def create_task(task: schemas.TaskCreate, db: Session = Depends(get_db)):
 
 
 @router.get('/', response_model=list[schemas.Task])
-def get_all_tasks(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+def get_all_tasks(skip: int = 0, limit: int = LIMIT, db: Session = Depends(get_db)):
     return crud.get_all_tasks(skip=skip, limit=limit, db=db)
 
 

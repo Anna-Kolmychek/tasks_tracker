@@ -2,6 +2,7 @@ from fastapi import HTTPException
 from sqlalchemy import update
 from sqlalchemy.orm import Session
 
+from src.constants import LIMIT_SELECT as LIMIT
 from src.users import schemas
 from src.users import models
 from src.users.utils import check_duplicate_email, convert_position_in_position_id
@@ -18,7 +19,7 @@ def create_user(user: schemas.UserCreate, db: Session):
     return db_user
 
 
-def get_all_users(db: Session, skip: int = 0, limit: int = 10):
+def get_all_users(db: Session, skip: int = 0, limit: int = LIMIT):
     return db.query(models.User).offset(skip).limit(limit).all()
 
 

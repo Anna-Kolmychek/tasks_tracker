@@ -1,6 +1,8 @@
 from fastapi import HTTPException
 from sqlalchemy import update
 from sqlalchemy.orm import Session
+
+from src.constants import LIMIT_SELECT as LIMIT
 from src.positions import schemas
 from src.positions import models
 from src.positions.utils import check_duplicate_positions
@@ -16,7 +18,7 @@ def create_position(position: schemas.PositionCreate, db: Session):
     return db_position
 
 
-def get_all_positions(db: Session, skip: int = 0, limit: int = 10):
+def get_all_positions(db: Session, skip: int = 0, limit: int = LIMIT):
     return db.query(models.Position).offset(skip).limit(limit).all()
 
 

@@ -7,6 +7,8 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
     password: str
+    firstname: str | None = None
+    lastname: str | None = None
     position: str | None = None
 
 
@@ -16,6 +18,8 @@ class UserUpdate(UserCreate):
 
 class UserPartialUpdate(UserUpdate):
     email: str | None = None
+    firstname: str | None = None
+    lastname: str | None = None
     password: str | None = None
     position: str | None = None
 

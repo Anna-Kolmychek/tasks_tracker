@@ -1,6 +1,7 @@
 from fastapi import HTTPException
 from sqlalchemy import update
 from sqlalchemy.orm import Session
+from src.constants import LIMIT_SELECT as LIMIT
 from src.tasks import schemas, models
 from src.tasks.utils import check_relationship_fields
 
@@ -14,7 +15,7 @@ def create_task(task: schemas.TaskCreate, db: Session):
     return db_task
 
 
-def get_all_tasks(db: Session, skip: int = 0, limit: int = 10):
+def get_all_tasks(db: Session, skip: int = 0, limit: int = LIMIT):
     return db.query(models.Task).offset(skip).limit(limit).all()
 
 

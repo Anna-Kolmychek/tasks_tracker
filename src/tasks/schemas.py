@@ -12,7 +12,7 @@ class TaskStatus(Enum):
 
 class TaskOptioanlPart(BaseModel):
     description: str | None = None
-    status: TaskStatus | None = None
+    status: TaskStatus | None = TaskStatus.new
     parent_task_id: int | None = None
     maker_id: int | None = None
     maker_position_id: int | None = None

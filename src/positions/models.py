@@ -1,13 +1,17 @@
 from typing import List
 
-from sqlalchemy import String
+from sqlalchemy import String, MetaData
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.database import Base
 
+metadata_position = MetaData()
+
 
 class Position(Base):
     __tablename__ = "job_position"
+
+    # metadata = metadata_position
 
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column(String)

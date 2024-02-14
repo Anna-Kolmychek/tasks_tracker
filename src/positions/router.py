@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
+from src.constants import LIMIT_SELECT as LIMIT
 from src.database import get_db
 from src.positions import schemas
 from src.positions import crud
@@ -18,7 +19,7 @@ async def create_position(position: schemas.PositionCreate, db: Session = Depend
 
 
 @router.get('/', response_model=list[schemas.Position])
-async def get_all_positions(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+async def get_all_positions(skip: int = 0, limit: int = LIMIT, db: Session = Depends(get_db)):
     return crud.get_all_positions(skip=skip, limit=limit, db=db)
 
 

@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
+from src.constants import LIMIT_SELECT as LIMIT
 from src.database import get_db
 from src.users import schemas
 from src.users import crud
@@ -17,7 +18,7 @@ async def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
 
 @router.get('/', response_model=list[schemas.User])
-async def get_all_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+async def get_all_users(skip: int = 0, limit: int = LIMIT, db: Session = Depends(get_db)):
     return crud.get_all_users(db=db, skip=skip, limit=limit)
 
 
