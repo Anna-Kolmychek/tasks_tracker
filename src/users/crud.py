@@ -24,7 +24,7 @@ def get_all_users(db: Session, skip: int = 0, limit: int = LIMIT):
 
 
 def get_user_by_id(id: int, db: Session):
-    db_user = db.query(models.User).get(id)
+    db_user = db.get(models.User, id)
     if not db_user:
         raise HTTPException(status_code=404, detail=f'User with id={id} not exist')
     return db_user

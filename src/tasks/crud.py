@@ -20,7 +20,7 @@ def get_all_tasks(db: Session, skip: int = 0, limit: int = LIMIT):
 
 
 def get_task_by_id(id: int, db: Session):
-    db_task = db.query(models.Task).get(id)
+    db_task = db.get(models.Task, id)
     if not db_task:
         raise HTTPException(status_code=404, detail=f'Task with id={id} not exist')
     return db_task

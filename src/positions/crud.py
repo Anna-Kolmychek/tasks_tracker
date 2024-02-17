@@ -23,7 +23,7 @@ def get_all_positions(db: Session, skip: int = 0, limit: int = LIMIT):
 
 
 def get_position_by_id(id: int, db: Session):
-    db_position = db.query(models.Position).get(id)
+    db_position = db.get(models.Position, id)
     if not db_position:
         raise HTTPException(status_code=404, detail=f'Position with id={id} not exist')
     return db_position

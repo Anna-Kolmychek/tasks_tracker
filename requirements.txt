@@ -4,4 +4,7 @@ sqlalchemy
 alembic
 psycopg2-binary
 python-dotenv
+pytest
+httpx
+pytest-cov
 
