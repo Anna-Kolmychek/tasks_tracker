@@ -26,6 +26,7 @@ class TaskCreate(TaskOptioanlPart):
 class TaskUpdate(TaskOptioanlPart):
     title: str
 
+
 class TaskPartialUpdate(TaskOptioanlPart):
     title: str | None = None
 
@@ -33,4 +34,3 @@ class TaskPartialUpdate(TaskOptioanlPart):
 class Task(TaskOptioanlPart):
     id: int
     title: str
-

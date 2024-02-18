@@ -1,6 +1,8 @@
 venv/
 .idea/
 __pycache__/
-.env
 .pytest_cache
 .coverage
+.env
+.env_dev
+.env_docker

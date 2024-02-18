@@ -25,7 +25,6 @@ class Task(Base):
     maker_id: Mapped[Optional[int]] = mapped_column(ForeignKey('user_account.id'), default=None)
     maker_position_id: Mapped[Optional[int]] = mapped_column(ForeignKey('job_position.id'), default=None)
 
-    # parent_task: Mapped['Task'] = relationship(remote_side=[id], backref='child_tasks')
     child_tasks: Mapped[List['Task']] = relationship(remote_side=[parent_task_id])
     maker: Mapped['User'] = relationship(back_populates='tasks')
     maker_position: Mapped['Position'] = relationship(back_populates='tasks')

@@ -1,34 +1,62 @@
 version: '3'
 
 services:
-  postgres:
-    container_name: postgres
+  postgres_db:
+    container_name: postgres_db
     image: postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: TEST_DB
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_HOST: ${DB_HOST}
+      POSTGRES_PORT: ${DB_PORT}
+      POSTGRES_DB: ${DB_NAME}
       PGDATA: /var/lib/postgresql/data/pgdata
-    ports:
-      - "5431:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data/pgdata
-    restart: always
 
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    depends_on:
-      - postgres
     ports:
-      - "5050:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+      - "5430:5432"
     restart: always
+    env_file:
+      - .env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postgres_db_test:
+    container_name: postgres_db_test
+    image: postgres
+    environment:
+      POSTGRES_USER: ${DB_USER_TEST}
+      POSTGRES_PASSWORD: ${DB_PASS_TEST}
+      POSTGRES_HOST: ${DB_HOST_TEST}
+      POSTGRES_PORT: ${DB_PORT_TEST}
+      POSTGRES_DB: ${DB_NAME_TEST}
+    ports:
+      - "5429:5432"
+    restart: always
+    env_file:
+      - .env
+
+  app:
+    build:
+      context: .
+    container_name: tasks_tracker
+    env_file:
+      - .env
+    ports:
+      - 9999:8000
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+    command: >
+      sh -c "alembic upgrade head &&
+             uvicorn src.main:app --host 0.0.0.0 --port 8000"
     volumes:
-      - pgadmin-data:/var/lib/pgadmin
+      - .:/tasks_tracker
+
 
 volumes:
   pgdata:
-  pgadmin-data:

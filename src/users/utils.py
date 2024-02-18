@@ -1,7 +1,7 @@
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
-from src.users import schemas as schemas_users, models as models_users
+from src.users import models as models_users
 from src.positions import models as models_positions
 
 

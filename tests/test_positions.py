@@ -1,4 +1,3 @@
-import pytest
 from fastapi.encoders import jsonable_encoder
 
 from src.positions.models import Position

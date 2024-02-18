@@ -46,4 +46,3 @@ def delete_task_by_id(db: Session, id: int):
     db.delete(db_task)
     db.commit()
     return db_task
-

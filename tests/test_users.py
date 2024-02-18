@@ -1,7 +1,5 @@
-import pytest
 from fastapi.encoders import jsonable_encoder
 
-from src.positions.models import Position
 from src.users.models import User
 from tests.conftest import client, TestingSessionLocal
 

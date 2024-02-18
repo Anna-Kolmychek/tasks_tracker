@@ -7,6 +7,7 @@ from src.database import Base
 
 metadata_user = MetaData()
 
+
 class User(Base):
     __tablename__ = "user_account"
 

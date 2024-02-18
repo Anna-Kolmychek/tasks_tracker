@@ -1,8 +1,5 @@
 import json
 
-import pytest
-
-from src.positions.models import Position
 from tests.conftest import TestingSessionLocal, client
 
 
@@ -14,6 +11,7 @@ def test_get_busy_users(load_test_data_in_db):
 
     response = client.get('/services/busy_users')
     assert data == response.json(), 'Неверная выгрузка'
+
 
 def test_get_important_tasks(load_test_data_in_db):
     # Запрос на всех важные задачи
