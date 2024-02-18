@@ -26,6 +26,19 @@ git clone https://github.com/Anna-Kolmychek/tasks_tracker.git
 docker-compose up --build
 ```
 
+Возможно порты или названия контейнеров уже заняты. В этом случае проект не соберется. Очистите контейнеры и volume и попробуйте перезапустить сборк заново. Для очистки можно использовать команды
+```
+docker rm -vf $(docker ps -a -q)
+docker volume rm $(docker volume ls -q --filter dangling=true)
+```
+
+<ins>!!! После успешной сборки вы можете перейти к swagger-документации для ознакомления с api !!!</ins>
+
+При локальном запуске:
+```
+http://localhost:9999/docs/
+```
+
 4. При желании загрузите тестовый набор данных в основную БД
 
 ```
