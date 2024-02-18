@@ -2,17 +2,7 @@ import pytest
 from fastapi.encoders import jsonable_encoder
 
 from src.positions.models import Position
-from tests.conftests import client, prepare_db, TestingSessionLocal
-
-
-@pytest.fixture
-def position_data1():
-    return {'title': 'test position 1'}
-
-
-@pytest.fixture
-def position_data2():
-    return {'title': 'test position 2'}
+from tests.conftest import client, TestingSessionLocal
 
 
 def test_create_position(position_data1):

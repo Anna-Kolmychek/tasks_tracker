@@ -37,6 +37,6 @@ async def partial_update_user_by_id(id: int, user: schemas.UserPartialUpdate, db
     return crud.update_user_by_id(id=id, user=user, db=db, is_partial_update=True)
 
 
-@router.delete('/{id}')
+@router.delete('/{id}', response_model=schemas.User)
 async def delete_user_by_id(id: int, db: Session = Depends(get_db)):
     return crud.delete_user_by_id(id=id, db=db)

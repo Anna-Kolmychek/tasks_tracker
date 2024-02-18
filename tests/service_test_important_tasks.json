@@ -1,0 +1,36 @@
+[
+  {
+    "task": {
+      "description": null,
+      "status": "new",
+      "parent_task_id": null,
+      "maker_id": 1,
+      "maker_position_id": 1,
+      "deadline": "2024-04-12",
+      "id": 1,
+      "title": "Backend задача 1"
+    },
+    "deadline": "2024-04-12",
+    "possible_makers": [
+      "Сергеев Сергей",
+      "Андреев Андрей",
+      "Иванов Иван"
+    ]
+  },
+  {
+    "task": {
+      "description": null,
+      "status": "new",
+      "parent_task_id": null,
+      "maker_id": null,
+      "maker_position_id": 1,
+      "deadline": "2024-04-15",
+      "id": 7,
+      "title": "Backend задача 7"
+    },
+    "deadline": "2024-04-15",
+    "possible_makers": [
+      "Иванов Иван"
+    ]
+  }
+]

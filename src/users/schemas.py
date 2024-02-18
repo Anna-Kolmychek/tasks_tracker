@@ -26,4 +26,6 @@ class UserPartialUpdate(UserUpdate):
 
 class User(UserBase):
     id: int
+    firstname: str | None = None
+    lastname: str | None = None
     position_id: int | None

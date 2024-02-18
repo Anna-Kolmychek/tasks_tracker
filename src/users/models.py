@@ -12,10 +12,10 @@ class User(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     email: Mapped[str] = mapped_column(String)
-    firstname: Mapped[str] =mapped_column(String)
-    lastname: Mapped[str] =mapped_column(String)
+    firstname: Mapped[Optional[str]] = mapped_column(String, default=None)
+    lastname: Mapped[Optional[str]] = mapped_column(String, default=None)
     password: Mapped[str] = mapped_column(String)
-    position_id: Mapped[Optional[int]] = mapped_column(ForeignKey('job_position.id'))
+    position_id: Mapped[Optional[int]] = mapped_column(ForeignKey('job_position.id'), default=None)
 
     position: Mapped['Position'] = relationship(back_populates='users')
     tasks: Mapped[List['Task']] = relationship(back_populates='maker')

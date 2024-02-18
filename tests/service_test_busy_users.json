@@ -1,0 +1,138 @@
+[
+  {
+    "email": "p_petrov@email.com",
+    "id": 2,
+    "firstname": "Петр",
+    "lastname": "Петров",
+    "position_id": 1,
+    "tasks": [
+      {
+        "description": null,
+        "status": "new",
+        "parent_task_id": null,
+        "maker_id": 2,
+        "maker_position_id": 1,
+        "deadline": "2024-05-30",
+        "id": 3,
+        "title": "Backend задача 3"
+      },
+      {
+        "description": null,
+        "status": "new",
+        "parent_task_id": null,
+        "maker_id": 2,
+        "maker_position_id": 1,
+        "deadline": "2024-05-30",
+        "id": 4,
+        "title": "Backend задача 4"
+      },
+      {
+        "description": null,
+        "status": "new",
+        "parent_task_id": null,
+        "maker_id": 2,
+        "maker_position_id": 1,
+        "deadline": "2024-05-30",
+        "id": 5,
+        "title": "Backend задача 5"
+      },
+      {
+        "description": null,
+        "status": "in work",
+        "parent_task_id": 1,
+        "maker_id": 2,
+        "maker_position_id": 1,
+        "deadline": "2024-03-15",
+        "id": 6,
+        "title": "Backend задача 6"
+      }
+    ]
+  },
+  {
+    "email": "i_ivanov@email.com",
+    "id": 1,
+    "firstname": "Иван",
+    "lastname": "Иванов",
+    "position_id": 1,
+    "tasks": [
+      {
+        "description": null,
+        "status": "new",
+        "parent_task_id": null,
+        "maker_id": 1,
+        "maker_position_id": 1,
+        "deadline": "2024-04-12",
+        "id": 1,
+        "title": "Backend задача 1"
+      },
+      {
+        "description": null,
+        "status": "in work",
+        "parent_task_id": 7,
+        "maker_id": 1,
+        "maker_position_id": 1,
+        "deadline": "2024-03-10",
+        "id": 2,
+        "title": "Backend задача 2"
+      }
+    ]
+  },
+  {
+    "email": "v_morozov@email.com",
+    "id": 8,
+    "firstname": "Виктор",
+    "lastname": "Морозов",
+    "position_id": 3,
+    "tasks": [
+      {
+        "description": null,
+        "status": "in work",
+        "parent_task_id": null,
+        "maker_id": 8,
+        "maker_position_id": 3,
+        "deadline": "2024-02-12",
+        "id": 10,
+        "title": "QA задача 1"
+      },
+      {
+        "description": null,
+        "status": "closed",
+        "parent_task_id": null,
+        "maker_id": 8,
+        "maker_position_id": 3,
+        "deadline": "2024-02-14",
+        "id": 17,
+        "title": "QA задача 2"
+      },
+      {
+        "description": null,
+        "status": "new",
+        "parent_task_id": null,
+        "maker_id": 8,
+        "maker_position_id": 3,
+        "deadline": "2024-02-14",
+        "id": 18,
+        "title": "QA задача 3"
+      }
+    ]
+  },
+  {
+    "email": "a_smirnov@email.com",
+    "id": 5,
+    "firstname": "Антон",
+    "lastname": "Смирнов",
+    "position_id": 2,
+    "tasks": [
+      {
+        "description": null,
+        "status": "in work",
+        "parent_task_id": null,
+        "maker_id": 5,
+        "maker_position_id": 2,
+        "deadline": "2024-02-12",
+        "id": 11,
+        "title": "Frontend задача 1"
+      }
+    ]
+  }
+]
