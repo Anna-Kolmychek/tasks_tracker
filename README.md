@@ -161,12 +161,4 @@ docker-compose exec app pytest --cov
 <hr>
 
 ## Стэк технологий
-<img src="https://img.shields.io/badge/python-134881?style=for-the-badge&logo=python&logoColor=ffffff"/>
-<img src="https://img.shields.io/badge/fastapi-134881?style=for-the-badge&logo=FastAPI&logoColor=ffffff"/>
-<img src="https://img.shields.io/badge/swagger-134881?style=for-the-badge&logo=swagger&logoColor=ffffff"/>
-<img src="https://img.shields.io/badge/alembic-134881?style=for-the-badge&logo=НАЗВАНИЕ ЛОГОТИПА&logoColor=ffffff"/>
-<img src="https://img.shields.io/badge/docker-134881?style=for-the-badge&logo=docker&logoColor=ffffff"/>
-<img src="https://img.shields.io/badge/docker compose-134881?style=for-the-badge&logo=НАЗВАНИЕ ЛОГОТИПА&logoColor=ffffff"/>
-<img src="https://img.shields.io/badge/pytest-134881?style=for-the-badge&logo=pytest&logoColor=ffffff"/>
-<img src="https://img.shields.io/badge/pydentic-134881?style=for-the-badge&logo=pydantic&logoColor=ffffff"/>
-<img src="https://img.shields.io/badge/sqlalchemy-134881?style=for-the-badge&logo=sqlalchemy&logoColor=ffffff"/>
+<img src="https://img.shields.io/badge/python-134881?style=for-the-badge&logo=python&logoColor=ffffff"/> <img src="https://img.shields.io/badge/fastapi-134881?style=for-the-badge&logo=FastAPI&logoColor=ffffff"/> <img src="https://img.shields.io/badge/swagger-134881?style=for-the-badge&logo=swagger&logoColor=ffffff"/> <img src="https://img.shields.io/badge/alembic-134881?style=for-the-badge&logo=НАЗВАНИЕ ЛОГОТИПА&logoColor=ffffff"/> <img src="https://img.shields.io/badge/docker-134881?style=for-the-badge&logo=docker&logoColor=ffffff"/> <img src="https://img.shields.io/badge/docker compose-134881?style=for-the-badge&logo=НАЗВАНИЕ ЛОГОТИПА&logoColor=ffffff"/> <img src="https://img.shields.io/badge/pytest-134881?style=for-the-badge&logo=pytest&logoColor=ffffff"/> <img src="https://img.shields.io/badge/pydentic-134881?style=for-the-badge&logo=pydantic&logoColor=ffffff"/> <img src="https://img.shields.io/badge/sqlalchemy-134881?style=for-the-badge&logo=sqlalchemy&logoColor=ffffff"/>
